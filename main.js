@@ -1,29 +1,40 @@
-var people=[];
+arraynameofstudent=[];
+
 function submit(){
-    var name=document.getElementsById("name1").value;
-    people.push(name);
-    document.getElementById("display_name").innerhtml=people.toString();
+    var displayname=[];
+    for(var j=1; j<=4; j++){
+        var namestudent=document.getElementById("name_of_the_student_"+j).value;
+        console.log(namestudent);
+        arraynameofstudent.push(namestudent);
+       
+    }
+    console.log(arraynameofstudent);
+    var namelength=arraynameofstudent.length;
+
+    for(var k=0; k<namelength;k++)
+    {
+        displayname.push("<h4> Name="+arraynameofstudent[k]+"</h4>");
+        console.log(displayname);
+    }
+    document.getElementById("display_name_with_commas").innerHTML=displayname;
+
+    var removecomma=displayname.join(" ");
+    document.getElementById("display_name_without_commas").innerHTML=removecomma;
+    document.getElementById("submit_button").style.display="none";
+    document.getElementById("sort_button").style.display="inline-block";
+
+    
 }
-function sorting() { people.sort();
-     var i= people.join("");
- console.log(people);
-  document.getElementById("sorted").innerHTML=i.toString();
- }
 
- function searching(){
-      var s= document.getElementById("s1").value;
-       var found=0;
-        var j;
-        for(j=0;j<people.length; j++) 
-        { if(s==people[j])
-            { found=found+1;
-             } } 
-             document.getElementById("p2").innerHTML="name found "+found+" time/s";
-              console.log("found name "+found+" time/s"); }
-
-
-              function show() {
-                   var i= people.join("");
-                    console.log(people);
-                     document.getElementById("p1").innerHTML=i.toString();
-                      document.getElementById("sort_button").style.display="block"; }
+function sorting(){
+    arraynameofstudent.sort();
+    var displaysort=[];
+    var namelength=arraynameofstudent.length;
+    for(var k=0; k<namelength;k++)
+    {
+        displaysort.push("<h4> Name="+arraynameofstudent[k]+"</h4>");
+        console.log(displaysort);
+    }
+    var removecomma=displaysort.join(" ");
+    document.getElementById("display_name_without_commas").innerHTML=removecomma;
+}
